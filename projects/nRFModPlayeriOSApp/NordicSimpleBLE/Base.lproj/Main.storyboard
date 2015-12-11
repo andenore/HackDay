@@ -78,36 +78,78 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="tpe-Uz-4xD"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gyh-cW-yWf">
+                                <rect key="frame" x="271" y="508" width="57.5" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="HLe-Yx-Y1b">
+                                <rect key="frame" x="235" y="537" width="129" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="8rM-Ej-fYy"/>
+                                </constraints>
+                            </slider>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mf-yd-aXn">
-                                <rect key="frame" x="265" y="285" width="70" height="30"/>
-                                <state key="normal" title="Send data"/>
+                                <rect key="frame" x="40" y="84" width="47" height="30"/>
+                                <state key="normal" title="Song 1"/>
                                 <connections>
                                     <action selector="bleSendData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0oR-Uj-jkF"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APS-NS-JsL">
+                                <rect key="frame" x="107" y="84" width="49" height="30"/>
+                                <state key="normal" title="Song 2"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fh-GZ-Qxk">
+                                <rect key="frame" x="40" y="134" width="49" height="30"/>
+                                <state key="normal" title="Song 3"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b1d-y2-phE">
+                                <rect key="frame" x="109" y="134" width="49" height="30"/>
+                                <state key="normal" title="Song 4"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="APS-NS-JsL" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="2Fi-tc-bP9"/>
                             <constraint firstItem="Nud-pN-cco" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="4G4-TP-sUQ"/>
                             <constraint firstItem="QHj-uX-Q4H" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Ot-0m-gQQ"/>
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5qV-YA-mHC"/>
+                            <constraint firstItem="4mf-yd-aXn" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="20" id="7d6-dw-6lv"/>
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fa4-3L-AIj"/>
+                            <constraint firstItem="Gyh-cW-yWf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="GEA-Dh-Jru"/>
                             <constraint firstAttribute="trailing" secondItem="Nud-pN-cco" secondAttribute="trailing" id="GYR-My-xUV"/>
+                            <constraint firstItem="QHj-uX-Q4H" firstAttribute="top" secondItem="HLe-Yx-Y1b" secondAttribute="bottom" constant="8" id="GdQ-Mf-7vZ"/>
                             <constraint firstItem="4mf-yd-aXn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HsB-no-Fhv"/>
                             <constraint firstItem="QHj-uX-Q4H" firstAttribute="top" relation="lessThanOrEqual" secondItem="E8c-Eb-h9P" secondAttribute="bottom" constant="175" id="JxV-wo-qzM"/>
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="KPQ-y1-Zzu"/>
+                            <constraint firstItem="b1d-y2-phE" firstAttribute="leading" secondItem="2fh-GZ-Qxk" secondAttribute="trailing" constant="20" id="KrF-kW-NoO"/>
+                            <constraint firstItem="HLe-Yx-Y1b" firstAttribute="top" secondItem="Gyh-cW-yWf" secondAttribute="bottom" constant="8" id="Kt9-DR-0Sz"/>
+                            <constraint firstItem="b1d-y2-phE" firstAttribute="top" secondItem="APS-NS-JsL" secondAttribute="bottom" constant="20" id="MOP-7y-Ufv"/>
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="136" id="Nr2-3T-IN9"/>
+                            <constraint firstItem="2fh-GZ-Qxk" firstAttribute="top" secondItem="4mf-yd-aXn" secondAttribute="bottom" constant="20" id="Oha-t3-hGA"/>
                             <constraint firstItem="ace-GQ-hib" firstAttribute="trailing" secondItem="Nud-pN-cco" secondAttribute="trailing" id="TFo-Gm-xmX"/>
                             <constraint firstItem="ace-GQ-hib" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="UiK-cv-qJy"/>
+                            <constraint firstItem="2fh-GZ-Qxk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="ZXe-KG-eJM"/>
                             <constraint firstItem="Nud-pN-cco" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Zxm-vi-1El"/>
+                            <constraint firstItem="HLe-Yx-Y1b" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="a5o-oi-kXy"/>
                             <constraint firstItem="ace-GQ-hib" firstAttribute="top" secondItem="Nud-pN-cco" secondAttribute="top" id="avW-3b-ce1"/>
+                            <constraint firstItem="APS-NS-JsL" firstAttribute="leading" secondItem="4mf-yd-aXn" secondAttribute="trailing" constant="20" id="crv-9D-hsa"/>
                             <constraint firstItem="QHj-uX-Q4H" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="eg7-fT-m9v"/>
                             <constraint firstItem="ace-GQ-hib" firstAttribute="leading" secondItem="Nud-pN-cco" secondAttribute="leading" id="hVY-yz-Y2x"/>
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kS3-qH-Tv1"/>
                             <constraint firstItem="4mf-yd-aXn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lIG-hw-su3"/>
                             <constraint firstItem="ace-GQ-hib" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="ujN-oR-OF5"/>
                             <constraint firstItem="Nud-pN-cco" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wl4-eF-xIZ"/>
+                            <constraint firstItem="4mf-yd-aXn" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="xcW-iU-3PY"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="HsB-no-Fhv"/>
+                                <exclude reference="lIG-hw-su3"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="nRF Mod Player" id="d1o-9b-fyB">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="P7L-ij-A2R">

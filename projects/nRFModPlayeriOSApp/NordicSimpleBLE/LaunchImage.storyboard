@@ -17,15 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nRF_splash_screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="inA-02-m6s">
-                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="nRF_splash_screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="inA-02-m6s">
+                                <rect key="frame" x="0.0" y="18" width="600" height="582"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="inA-02-m6s" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="OIb-ag-504"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="inA-02-m6s" secondAttribute="bottom" id="dNH-uy-vTR"/>
-                            <constraint firstItem="inA-02-m6s" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" id="eY2-Di-nBX"/>
+                            <constraint firstItem="inA-02-m6s" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-2" id="eY2-Di-nBX"/>
                             <constraint firstAttribute="trailing" secondItem="inA-02-m6s" secondAttribute="trailing" id="oyn-MN-SIq"/>
                         </constraints>
                     </view>

@@ -36,6 +36,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="nRF_splash_screen.png" width="1242" height="2208"/>
+        <image name="nRF_splash_screen.png" width="1234" height="1983"/>
     </resources>
 </document>

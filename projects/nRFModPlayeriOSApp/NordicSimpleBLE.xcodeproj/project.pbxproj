@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8736719C1C1ACCCE00729C38 /* nRF_splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8736719B1C1ACCCE00729C38 /* nRF_splash_screen.png */; };
+		8736719E1C1AD2E900729C38 /* nRF_splash_screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8736719D1C1AD2E900729C38 /* nRF_splash_screen.png */; };
 		87B609631BEBD4B600A8C6BD /* LaunchImage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B609621BEBD4B600A8C6BD /* LaunchImage.storyboard */; };
 		87D12BD01C16EAF9004E7006 /* background_image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 87D12BCC1C16EAF9004E7006 /* background_image.jpg */; };
 		87D12BD11C16EAF9004E7006 /* background_title.png in Resources */ = {isa = PBXBuildFile; fileRef = 87D12BCD1C16EAF9004E7006 /* background_title.png */; };
@@ -40,7 +40,7 @@
 		873671981C1ACC4700729C38 /* NordicSimpleBLE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NordicSimpleBLE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		873671991C1ACC4700729C38 /* NordicSimpleBLETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NordicSimpleBLETests.xctest; path = "/Users/SAG1/Documents/HackDay/projects/nRFModPlayeriOSApp/build/Debug-iphoneos/NordicSimpleBLETests.xctest"; sourceTree = "<absolute>"; };
 		8736719A1C1ACC4700729C38 /* NordicSimpleBLEUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = NordicSimpleBLEUITests.xctest; path = "/Users/SAG1/Documents/HackDay/projects/nRFModPlayeriOSApp/build/Debug-iphoneos/NordicSimpleBLEUITests.xctest"; sourceTree = "<absolute>"; };
-		8736719B1C1ACCCE00729C38 /* nRF_splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nRF_splash_screen.png; path = images/nRF_splash_screen.png; sourceTree = "<group>"; };
+		8736719D1C1AD2E900729C38 /* nRF_splash_screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nRF_splash_screen.png; path = images/nRF_splash_screen.png; sourceTree = "<group>"; };
 		87B609621BEBD4B600A8C6BD /* LaunchImage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchImage.storyboard; sourceTree = "<group>"; };
 		87D12BCC1C16EAF9004E7006 /* background_image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = background_image.jpg; path = images/background_image.jpg; sourceTree = "<group>"; };
 		87D12BCD1C16EAF9004E7006 /* background_title.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background_title.png; path = images/background_title.png; sourceTree = "<group>"; };
@@ -80,7 +80,7 @@
 		871A7CC61C16D98200D97B76 /* images */ = {
 			isa = PBXGroup;
 			children = (
-				8736719B1C1ACCCE00729C38 /* nRF_splash_screen.png */,
+				8736719D1C1AD2E900729C38 /* nRF_splash_screen.png */,
 				87D12BCC1C16EAF9004E7006 /* background_image.jpg */,
 				87D12BCD1C16EAF9004E7006 /* background_title.png */,
 			);
@@ -216,7 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				87D460621BDE67180035BBCF /* Assets.xcassets in Resources */,
-				8736719C1C1ACCCE00729C38 /* nRF_splash_screen.png in Resources */,
+				8736719E1C1AD2E900729C38 /* nRF_splash_screen.png in Resources */,
 				87D12BD01C16EAF9004E7006 /* background_image.jpg in Resources */,
 				87B609631BEBD4B600A8C6BD /* LaunchImage.storyboard in Resources */,
 				87D12BD11C16EAF9004E7006 /* background_title.png in Resources */,

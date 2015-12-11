@@ -110,6 +110,7 @@ class BLEManager : NSObject, CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
+        print("Connected!")
         peripheralDelegateInst?.didConnectPeripheral(peripheral)
     }
     

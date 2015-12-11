@@ -15,8 +15,9 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     
     private let nRFModPlayerName = "nRF_Mod_Player"
     
-    private let nRFModPlayerServiceUUID        = CBUUID.init(string: "00001523-1212-EFDE-1523-785FEABCD123")
-    private let nRFModPlayerCharacteristicUUID = CBUUID.init(string: "00001524-1212-EFDE-1523-785FEABCD123")
+    private let nRFModPlayerServiceUUID          = CBUUID.init(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
+    private let nRFModPlayerTXCharacteristicUUID = CBUUID.init(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
+    private let nRFModPlayerRXCharacteristicUUID = CBUUID.init(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
     
     private struct nordicBlueColor {
         let red:   Float = 0.0   / 255.0
@@ -28,10 +29,10 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     private let OffNS = NSData(bytes: [0] as [UInt8], length: sizeof(UInt8))
     private let OnNS  = NSData(bytes: [1] as [UInt8], length: sizeof(UInt8))
     
-    private var nRFModPlayerPeripheral          : CBPeripheral?
-    private var nRFModPlayerService             : CBService?
-    private var nRFModPlayerCharateristic       : CBCharacteristic?
-    private var nRFModPlayerCharacteristic      : CBCharacteristic?
+    private var nRFModPlayerPeripheral            : CBPeripheral?
+    private var nRFModPlayerService               : CBService?
+    private var nRFModPlayerTXCharacteristic       : CBCharacteristic?
+    private var nRFModPlayerRXCharacteristic      : CBCharacteristic?
     
     private var discoveredPeripherals = [(peripheral: CBPeripheral, RSSI: String)]()
     
@@ -93,7 +94,7 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     }*/
     
     @IBAction func hideScanWindow(sender: UITapGestureRecognizer) {
-        // Should stop scanning.
+        // Should stop scanning!!!
         hideScanWindow()
     }
     
@@ -105,26 +106,34 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     func didConnectPeripheral(peripheral: CBPeripheral) {
         if peripheral.name == nRFModPlayerName {
             nRFModPlayerPeripheral = peripheral
-            bleManager.discoverServices(peripheral, services: [nRFModPlayerServiceUUID])
+            bleManager.discoverServices(peripheral, services: nil)
             scanDisconnectButtonOutlet.setTitle("Disconnect", forState: .Normal)
             hideScanWindow()
         }
     }
     
     func didDiscoverServices(peripheral: CBPeripheral, services: [CBService]) {
+        print("didDiscoverServices")
+        print(services)
         for service in services {
+            print("for service in services")
             if service.UUID == nRFModPlayerServiceUUID {
+                print("found nRFModPlayerServiceUUID")
                 nRFModPlayerService = service
-                bleManager.discoverCharacteristics(peripheral, service: service, characteristics: [nRFModPlayerCharacteristicUUID])
+                bleManager.discoverCharacteristics(peripheral, service: service, characteristics: [nRFModPlayerTXCharacteristicUUID, nRFModPlayerRXCharacteristicUUID])
             }
         }
     }
     
     func didDiscoverCharacteristics(peripheral: CBPeripheral, characteristics: [CBCharacteristic]) {
         for characteristic in characteristics {
-            if characteristic.UUID == nRFModPlayerCharacteristicUUID {
-                nRFModPlayerCharateristic = characteristic
-                bleManager.setNotifyValue(characteristic)
+            if characteristic.UUID == nRFModPlayerTXCharacteristicUUID {
+                print("Discovered TX characteristic!")
+                nRFModPlayerTXCharacteristic = characteristic
+                // bleManager.setNotifyValue(characteristic)
+            } else if characteristic.UUID == nRFModPlayerRXCharacteristicUUID {
+                print("Discovered RX characteristic!")
+                nRFModPlayerRXCharacteristic = characteristic
             }
         }
     }
@@ -142,7 +151,8 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     func didDisconnectPeripheral(peripheral: CBPeripheral) {
         nRFModPlayerPeripheral = nil
         nRFModPlayerService = nil
-        nRFModPlayerCharateristic = nil
+        nRFModPlayerTXCharacteristic = nil
+        nRFModPlayerRXCharacteristic = nil
         scanDisconnectButtonOutlet.setTitle("Scan", forState: .Normal)
     }
     

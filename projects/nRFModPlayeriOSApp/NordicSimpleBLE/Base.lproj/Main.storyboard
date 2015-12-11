@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--nRF Blinky-->
+        <!--nRF Mod Player-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="NordicSimpleBLE" customModuleProvider="target" sceneMemberID="viewController">
@@ -100,7 +100,7 @@
                             <constraint firstItem="Nud-pN-cco" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wl4-eF-xIZ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="nRF Blinky" id="d1o-9b-fyB">
+                    <navigationItem key="navigationItem" title="nRF Mod Player" id="d1o-9b-fyB">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="P7L-ij-A2R">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ATz-8X-fkn">
                                 <rect key="frame" x="502" y="7" width="78" height="30"/>

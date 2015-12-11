@@ -27,7 +27,7 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     }
     
     private let OffNS = NSData(bytes: [0] as [UInt8], length: sizeof(UInt8))
-    private let OnNS  = NSData(bytes: [1] as [UInt8], length: sizeof(UInt8))
+    private let OnNS  = NSData(bytes: [0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69] as [UInt8], length: sizeof(UInt8) * 8)
     
     private var nRFModPlayerPeripheral            : CBPeripheral?
     private var nRFModPlayerService               : CBService?
@@ -45,7 +45,9 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     @IBAction func bleSendData(sender: UIButton) {
         print("BLE Send Data!")
         if let _ = nRFModPlayerPeripheral {
-            bleManager.writeCharacteristic(OnNS, characteristic: nRFModPlayerTXCharacteristic!)
+            let dataBytes : [UInt8] = [0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69]
+            let data  = NSData(bytes: dataBytes as [UInt8], length: sizeof(UInt8) * dataBytes.count)
+            bleManager.writeCharacteristic(data, characteristic: nRFModPlayerTXCharacteristic!)
         }
     }
     
@@ -87,21 +89,8 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
         }
     }
     
-    /*@IBAction func toggleLED(sender: UITapGestureRecognizer) {
-        if let _ = nordicBlinkyPeripheral {
-            if ledState == false {
-                bleManager.writeCharacteristic(ledOnNS, characteristic: ledCharacteristic!)
-                lightBulb.image = UIImage(named: "bulb_on.png")
-            } else if ledState == true {
-                bleManager.writeCharacteristic(ledOffNS, characteristic: ledCharacteristic!)
-                lightBulb.image = UIImage(named: "bulb_off.png")
-            }
-            ledState = !ledState
-        }
-    }*/
-    
     @IBAction func hideScanWindow(sender: UITapGestureRecognizer) {
-        // Should stop scanning!!!
+        bleManager.stopScanning()
         hideScanWindow()
     }
     

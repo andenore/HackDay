@@ -16,8 +16,8 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     private let nRFModPlayerName = "nRF_Mod_Player"
     
     private let nRFModPlayerServiceUUID          = CBUUID.init(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
-    private let nRFModPlayerTXCharacteristicUUID = CBUUID.init(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
-    private let nRFModPlayerRXCharacteristicUUID = CBUUID.init(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
+    private let nRFModPlayerTXCharacteristicUUID = CBUUID.init(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
+    private let nRFModPlayerRXCharacteristicUUID = CBUUID.init(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
     
     private struct nordicBlueColor {
         let red:   Float = 0.0   / 255.0
@@ -41,6 +41,13 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     @IBOutlet weak var scanTableView              : UITableView!
     @IBOutlet weak var navigationBar              : UINavigationItem!
     @IBOutlet weak var scanDisconnectButtonOutlet : UIButton!
+    
+    @IBAction func bleSendData(sender: UIButton) {
+        print("BLE Send Data!")
+        if let _ = nRFModPlayerPeripheral {
+            bleManager.writeCharacteristic(OnNS, characteristic: nRFModPlayerTXCharacteristic!)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -126,7 +133,6 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
             if characteristic.UUID == nRFModPlayerTXCharacteristicUUID {
                 print("Discovered TX characteristic!")
                 nRFModPlayerTXCharacteristic = characteristic
-                bleManager.writeCharacteristic(OnNS, characteristic: nRFModPlayerTXCharacteristic!)
             } else if characteristic.UUID == nRFModPlayerRXCharacteristicUUID {
                 print("Discovered RX characteristic!")
                 nRFModPlayerRXCharacteristic = characteristic

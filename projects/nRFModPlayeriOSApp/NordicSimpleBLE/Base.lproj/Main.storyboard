@@ -78,6 +78,13 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="tpe-Uz-4xD"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4mf-yd-aXn">
+                                <rect key="frame" x="265" y="285" width="70" height="30"/>
+                                <state key="normal" title="Send data"/>
+                                <connections>
+                                    <action selector="bleSendData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0oR-Uj-jkF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -86,6 +93,7 @@
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5qV-YA-mHC"/>
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Fa4-3L-AIj"/>
                             <constraint firstAttribute="trailing" secondItem="Nud-pN-cco" secondAttribute="trailing" id="GYR-My-xUV"/>
+                            <constraint firstItem="4mf-yd-aXn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="HsB-no-Fhv"/>
                             <constraint firstItem="QHj-uX-Q4H" firstAttribute="top" relation="lessThanOrEqual" secondItem="E8c-Eb-h9P" secondAttribute="bottom" constant="175" id="JxV-wo-qzM"/>
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="KPQ-y1-Zzu"/>
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="top" relation="greaterThanOrEqual" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="136" id="Nr2-3T-IN9"/>
@@ -96,6 +104,7 @@
                             <constraint firstItem="QHj-uX-Q4H" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="eg7-fT-m9v"/>
                             <constraint firstItem="ace-GQ-hib" firstAttribute="leading" secondItem="Nud-pN-cco" secondAttribute="leading" id="hVY-yz-Y2x"/>
                             <constraint firstItem="E8c-Eb-h9P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kS3-qH-Tv1"/>
+                            <constraint firstItem="4mf-yd-aXn" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lIG-hw-su3"/>
                             <constraint firstItem="ace-GQ-hib" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="ujN-oR-OF5"/>
                             <constraint firstItem="Nud-pN-cco" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="wl4-eF-xIZ"/>
                         </constraints>

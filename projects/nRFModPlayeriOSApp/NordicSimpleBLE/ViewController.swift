@@ -26,6 +26,8 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
         let alpha: Float = 1.0
     }
     
+    private var modFileData1 : [UInt8]?
+    
     private let OffNS = NSData(bytes: [0] as [UInt8], length: sizeof(UInt8))
     private let OnNS  = NSData(bytes: [0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69] as [UInt8], length: sizeof(UInt8) * 8)
     
@@ -41,15 +43,6 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     @IBOutlet weak var scanTableView              : UITableView!
     @IBOutlet weak var navigationBar              : UINavigationItem!
     @IBOutlet weak var scanDisconnectButtonOutlet : UIButton!
-    
-    @IBAction func bleSendData(sender: UIButton) {
-        print("BLE Send Data!")
-        if let _ = nRFModPlayerPeripheral {
-            let dataBytes : [UInt8] = [0x61, 0x62, 0x63, 0x64, 0x65, 0x66, 0x67, 0x68, 0x69]
-            let data  = NSData(bytes: dataBytes as [UInt8], length: sizeof(UInt8) * dataBytes.count)
-            bleManager.writeCharacteristic(data, characteristic: nRFModPlayerTXCharacteristic!)
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +63,8 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
         blurOverlay.addSubview(darkBlurView)
         
         hideScanWindow()
+        
+        self.modFileData1 = [0x63, 0x6C, 0x61, 0x73, 0x73, 0x30, 0x35, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x6D, 0x61, 0x6B, 0x74, 0x6F, 0x6E, 0x65, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x63, 0x6C, 0x61, 0x73, 0x73, 0x20, 0x26, 0x20, 0x73, 0x75, 0x70, 0x65, 0x72, 0x73, 0x74, 0x61, 0x72, 0x73, 0x00, 0x00, 0x00, 0x00, 0x00, 0xEB, 0x00, 0x40, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,  0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6, 0xD6]
     }
     
     override func didReceiveMemoryWarning() {
@@ -92,6 +87,32 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     @IBAction func hideScanWindow(sender: UITapGestureRecognizer) {
         bleManager.stopScanning()
         hideScanWindow()
+    }
+    
+    @IBAction func bleSendData(sender: UIButton) {
+        if let _ = nRFModPlayerPeripheral {
+            if var modFileData : [UInt8] = modFileData1?.reverse() {
+                
+                var dataBytes : [UInt8] = []
+                while modFileData.count != 0 {
+                    dataBytes.append(modFileData.popLast()!)
+                    if dataBytes.count == 20 {
+                        bleSendPacket(dataBytes)
+                        dataBytes.removeAll()
+                    }
+                }
+                if dataBytes.count != 0 {
+                    bleSendPacket(dataBytes)
+                    dataBytes.removeAll()
+                }
+                
+            }
+        }
+    }
+    
+    private func bleSendPacket(dataBytes : [UInt8]) {
+        let data  = NSData(bytes: dataBytes, length: sizeof(UInt8) * dataBytes.count)
+        bleManager.writeCharacteristic(data, characteristic: nRFModPlayerTXCharacteristic!)
     }
     
     func didDiscoverPeripheral(peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {

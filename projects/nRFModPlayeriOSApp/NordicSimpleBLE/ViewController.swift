@@ -16,8 +16,8 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     private let nRFModPlayerName = "nRF_Mod_Player"
     
     private let nRFModPlayerServiceUUID          = CBUUID.init(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")
-    private let nRFModPlayerTXCharacteristicUUID = CBUUID.init(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
-    private let nRFModPlayerRXCharacteristicUUID = CBUUID.init(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+    private let nRFModPlayerTXCharacteristicUUID = CBUUID.init(string: "6E400003-B5A3-F393-E0A9-E50E24DCCA9E")
+    private let nRFModPlayerRXCharacteristicUUID = CBUUID.init(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E")
     
     private struct nordicBlueColor {
         let red:   Float = 0.0   / 255.0
@@ -31,7 +31,7 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     
     private var nRFModPlayerPeripheral            : CBPeripheral?
     private var nRFModPlayerService               : CBService?
-    private var nRFModPlayerTXCharacteristic       : CBCharacteristic?
+    private var nRFModPlayerTXCharacteristic      : CBCharacteristic?
     private var nRFModPlayerRXCharacteristic      : CBCharacteristic?
     
     private var discoveredPeripherals = [(peripheral: CBPeripheral, RSSI: String)]()
@@ -113,12 +113,8 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
     }
     
     func didDiscoverServices(peripheral: CBPeripheral, services: [CBService]) {
-        print("didDiscoverServices")
-        print(services)
         for service in services {
-            print("for service in services")
             if service.UUID == nRFModPlayerServiceUUID {
-                print("found nRFModPlayerServiceUUID")
                 nRFModPlayerService = service
                 bleManager.discoverCharacteristics(peripheral, service: service, characteristics: [nRFModPlayerTXCharacteristicUUID, nRFModPlayerRXCharacteristicUUID])
             }
@@ -130,15 +126,19 @@ class ViewController: UIViewController, peripheralDelegate, UITableViewDataSourc
             if characteristic.UUID == nRFModPlayerTXCharacteristicUUID {
                 print("Discovered TX characteristic!")
                 nRFModPlayerTXCharacteristic = characteristic
-                // bleManager.setNotifyValue(characteristic)
+                bleManager.writeCharacteristic(OnNS, characteristic: nRFModPlayerTXCharacteristic!)
             } else if characteristic.UUID == nRFModPlayerRXCharacteristicUUID {
                 print("Discovered RX characteristic!")
                 nRFModPlayerRXCharacteristic = characteristic
+                bleManager.setNotifyValue(characteristic)
             }
         }
     }
     
     func didUpdateValueForCharacteristic(peripheral: CBPeripheral, characteristic: CBCharacteristic) {
+        print("didUpdateValueForCharacteristic")
+        print(characteristic)
+        print(characteristic.value)
         if let charValue = characteristic.value {
             if charValue == OffNS {
                 backgroundImage.image = backgroundImage.image!.imageWithRenderingMode(.AlwaysOriginal)

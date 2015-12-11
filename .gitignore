@@ -30,3 +30,13 @@
 
 # Debug files
 *.dSYM/
+
+# Keil output
+Listings
+Objects
+JLink*
+*.uvoptx
+*.uvguix.*
+RTE
+*.bin
+build
